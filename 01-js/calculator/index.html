@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Calculator</h1>
+        <div class="calculator-display">
+            <div class="result">Result=0</div>
+            <div class="expression">0</div>
+        </div>
+        <div class="calculator-buttons">
+            <div class="first-row">
+                <button type="button" onclick="calculation.appendToExp('(')" class="operator">(</button>
+                <button type="button" onclick="calculation.appendToExp(')')" class="operator">)</button>
+                <button type="button" onclick="calculation.appendToExp('%')" class="operator">%</button>
+                <button type="button" class="operator" onclick="calculation.clear()">CE</button>
+            </div>
+            <div class="second-row">
+                <button type="button" onclick="calculation.appendToExp('7')">7</button>
+                <button type="button" onclick="calculation.appendToExp('8')">8</button>
+                <button type="button" onclick="calculation.appendToExp('9')">9</button>
+                <button type="button" class="operator" onclick="calculation.appendToExp('/')">÷</button>
+            </div>
+            <div class="third-row">
+                <button type="button" onclick="calculation.appendToExp('4')">4</button>
+                <button type="button" onclick="calculation.appendToExp('5')">5</button>
+                <button type="button" onclick="calculation.appendToExp('6')">6</button>
+                <button type="button" class="operator" onclick="calculation.appendToExp('*')">x</button>
+            </div>
+            <div class="fourth-row">
+                <button type="button" onclick="calculation.appendToExp('1')">1</button>
+                <button type="button" onclick="calculation.appendToExp('2')">2</button>
+                <button type="button" onclick="calculation.appendToExp('3')">3</button>
+                <button type="button" class="operator" onclick="calculation.appendToExp('-')">-</button>
+            </div>
+            <div class="fifth-row">
+                <button type="button" onclick="calculation.appendToExp('0')">0</button>
+                <button type="button" onclick="calculation.appendToExp('.')">.</button>
+                <button type="button" class="equals" onclick="calculation.evaluate();calculation.getResult();">=</button>
+                <button type="button" class="operator" onclick="calculation.appendToExp('+')">+</button>
+            </div>
+        </div>
+    </div>
+    <script src="calculator.js"></script>
+</body>
+</html>

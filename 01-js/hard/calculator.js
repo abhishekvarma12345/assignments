@@ -35,7 +35,7 @@ class Calculator {
 
   divide(value) {
     if (value == 0) {
-      throw new Error("DiVisionByZero");
+      throw new Error;
     }
     this.result /= value;
   }
@@ -56,8 +56,6 @@ class Calculator {
         exp += expression[i];
       }
     }
-    //check if the expression is valid
-    console.log(exp)
     // calculate the expression
     let val = eval(exp);
 
