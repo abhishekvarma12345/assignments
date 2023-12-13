@@ -12,3 +12,5 @@ function wait(n) {
 let p = wait(10);
 console.log(p);
 p.then((message) => console.log(message));
+
+module.exports = wait;
