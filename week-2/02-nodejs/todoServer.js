@@ -45,5 +45,59 @@
   const app = express();
   
   app.use(bodyParser.json());
+
+  const todoList = [];
+
+  app.get('/todos', (req, res) => { // list of todo items
+    res.json(todoList);
+  })
+
+  app.get('/todos/:id', (req, res) => { // todo item with given id
+    const id = req.params.id;
+    let filteredTodo = todoList.filter(item => item.id == id);
+    if (filteredTodo.length != 0){
+      res.json(filteredTodo[0]);
+    }
+    else {
+      res.status(404).send("404 not found");
+    }
+    
+  });
+
+  app.post('/todos', (req, res) => { // Create a new todo item
+    let todoItem = req.body;
+    todoItem = {id: Math.floor(Math.random() * 10000), ...todoItem}
+    todoList.push(todoItem);
+    res.status(201).json(todoItem);
+  });
+
+
+  app.put('/todos/:id', (req, res) => { // Update todo item with given id
+    const todoIndex = todoList.findIndex(item => item.id === parseInt(req.params.id));
+    if (todoIndex === -1) {
+      res.send(404).send();
+    } else {
+      todoList[todoIndex].title = req.body.title;
+      todoList[todoIndex].description = req.body.description;
+      res.send(todoList[todoIndex]);
+    }
+  });
+
+  app.delete('/todos/:id', (req, res) => { // delete a todo item with given id
+    const todoIndex = todoList.findIndex(item => item.id === parseInt(req.params.id));
+    if (todoIndex === -1) {
+      res.send(404).send();
+    } else {
+      todoList.splice(todoIndex, 1);
+      res.status(200).send();
+    }
+  });
+
+  app.use((req, res, next) => { // middleware for other unkown routes
+    res.status(404).send("Invalid route");
+  });
+
   
+  
+  // app.listen(3000, () => {console.log("listening on http://localhost:3000");});
   module.exports = app;
