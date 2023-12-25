@@ -25,17 +25,20 @@ function wait3(t) {
 
 function calculateTime(t1, t2, t3) {
     const start = new Date().getTime();
-    let p1 = wait1(t1);
-    let p2 = p1.then(wait2(t2));
-    let p3 = p2.then(wait3(t3));
-    return p3.then(() => {
-        const end = new Date().getTime();
-        return end - start;
-    });
+    return wait1(t1)
+            .then(() => {
+                return wait2(t2);
+            })
+            .then(() => {
+                return wait3(t3);
+            })
+            .then(() => {
+                const end = new Date().getTime();
+                return end - start;
+            })
 
 }
 
-// let p = calculateTime(1, 2, 3);
-// p.then((difference) => console.log(difference))
+// calculateTime(1, 2, 3).then((res) => console.log(res));
 
 module.exports = calculateTime;
