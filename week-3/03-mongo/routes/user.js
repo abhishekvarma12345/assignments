@@ -45,16 +45,4 @@ router.post('/courses/:courseId', userMiddleware, (req, res) => {
 
 router.get('/purchasedCourses', userMiddleware, (req, res) => {
     // Implement fetching purchased courses logic
-    const username = req.headers.username;
-    const curUser = User.find({username: username});
-    const coursesExists = curUser.purchasedCourses;
-    if (coursesExists){
-        res.status(200).json(coursesExists);
-    }
-    else {
-        res.status(404).json({ message: 'No courses purchased' });
-    } 
 });
-
-
-module.exports = router;
