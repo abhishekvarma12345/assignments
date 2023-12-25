@@ -3,14 +3,18 @@
 */
 
 function wait(n) {
-    return new Promise(function (resolve, reject) {
-        setTimeout(() => resolve("Hi there"), n * 1000);
+    return  new Promise(function (resolve, reject) {
+        setTimeout(() => resolve(), n * 1000);
     });
 }
 
 
-let p = wait(10);
-console.log(p);
-p.then((message) => console.log(message));
+// let p = wait(3);
+// const start = Date.now();
+// p.then((() => {
+//     const end = Date.now();
+//     const difference = end - start;
+//     console.log(difference); // Expect difference to be at least 1000 ms (1 second)
+//   }));
 
 module.exports = wait;
